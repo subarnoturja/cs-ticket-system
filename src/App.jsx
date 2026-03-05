@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+const TaskCard = ({ ticket, onComplete }) => (
+  <div className="border border-gray-200 rounded-lg p-3 bg-white">
+    <p className="text-[12.5px] font-semibold text-gray-900 leading-snug mb-2.5">
+      {ticket.title}
+    </p>
+    <button
+      onClick={() => onComplete(ticket)}
+      className="w-full bg-green-500 hover:bg-green-600 text-white text-[13px] font-semibold rounded-md py-2 transition-colors duration-150"
+    >
+      Complete
+    </button>
+  </div>
+);
+
 function App() {
   const [tickets, setTickets] = useState(INITIAL_TICKETS);
   const [inProgress, setInProgress] = useState([]);
