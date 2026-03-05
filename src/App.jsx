@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+
 function App() {
   const [tickets, setTickets] = useState(INITIAL_TICKETS);
   const [inProgress, setInProgress] = useState([]);
@@ -8,9 +11,17 @@ function App() {
     setInProgress(p => [...p, ticket]);
     toast.info(`"${ticket.title}" added to Task Status`, { autoClose: 3000 });
   };
-  
+
+  const handleComplete = (ticket) => {
+    setInProgress(p => p.filter(t => t.id !== ticket.id));
+    setResolved(r => [...r, ticket]);
+    setTickets(t => t.filter(t => t.id !== ticket.id));
+    toast.success(`"${ticket.title}" marked as resolved!`, { autoClose: 3000 });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 font-sans">
+      <ToastContainer position="top-right" />
       {/* Navbar */}
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 h-14 flex items-center justify-between px-7">
         <span className="font-bold text-[15px] text-gray-900">
