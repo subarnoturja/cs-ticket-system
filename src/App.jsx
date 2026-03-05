@@ -1,6 +1,16 @@
 function App() {
+  const [tickets, setTickets] = useState(INITIAL_TICKETS);
+  const [inProgress, setInProgress] = useState([]);
+  const [resolved, setResolved] = useState([]);
+
+  const handleAddTicket = (ticket) => {
+    if (inProgress.some(t => t.id === ticket.id)) return;
+    setInProgress(p => [...p, ticket]);
+    toast.info(`"${ticket.title}" added to Task Status`, { autoClose: 3000 });
+  };
+  
   return (
-    <>
+    <div className="min-h-screen bg-gray-100 font-sans">
       {/* Navbar */}
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50 h-14 flex items-center justify-between px-7">
         <span className="font-bold text-[15px] text-gray-900">
@@ -175,7 +185,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 
