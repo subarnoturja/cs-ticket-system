@@ -1,6 +1,47 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+// Ticket Card
+const TicketCard = ({ ticket, onAdd, active }) => (
+  <div
+    onClick={() => !active && onAdd(ticket)}
+    className={`border rounded-lg p-3 transition-shadow duration-150 bg-white
+      ${active
+        ? "border-indigo-300 cursor-default"
+        : "border-gray-200 cursor-pointer hover:shadow-md hover:border-indigo-200"}`}
+  >
+    {/* top row */}
+    <div className="flex justify-between items-start gap-2 mb-1.5">
+      <span className="text-[13px] font-semibold text-gray-900 leading-snug flex-1">
+        {ticket.title}
+      </span>
+      <StatusBadge status={ticket.status} />
+    </div>
+
+    {/* description */}
+    <p className="text-[11.5px] text-gray-500 leading-relaxed mb-2 line-clamp-2">
+      {ticket.description}
+    </p>
+
+    {/* footer row */}
+    <div className="flex items-center justify-between flex-wrap gap-1">
+      <div className="flex items-center gap-1.5">
+        <span className="text-[10px] text-gray-400">#{ticket.id}</span>
+        <PriorityBadge priority={ticket.priority} />
+      </div>
+      <div className="flex items-center gap-2">
+        <span className="text-[11px] text-gray-500 flex items-center gap-1">
+          <UserIcon /> {ticket.customer}
+        </span>
+        <span className="text-[11px] text-gray-500 flex items-center gap-1">
+          <CalIcon /> {ticket.createdAt}
+        </span>
+      </div>
+    </div>
+  </div>
+);
+
+// Task Status Card
 const TaskCard = ({ ticket, onComplete }) => (
   <div className="border border-gray-200 rounded-lg p-3 bg-white">
     <p className="text-[12.5px] font-semibold text-gray-900 leading-snug mb-2.5">
