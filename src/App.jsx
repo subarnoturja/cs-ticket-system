@@ -23,6 +23,30 @@ function App() {
           </button>
         </div>
       </nav>
+      {/* Banner */}
+      <div className="px-6 pt-4">
+        <div className="rounded-xl overflow-hidden grid grid-cols-2">
+
+          {/* In-Progress */}
+          <div className="relative overflow-hidden flex flex-col items-center justify-center py-7"
+            style={{ background: "linear-gradient(135deg,#7c3aed 0%,#5b21b6 45%,#4338ca 100%)" }}>
+            <div className="absolute top-[-60px] right-[-60px] w-[150px] h-[150px] rounded-full border border-white/10 pointer-events-none" />
+            <div className="absolute bottom-[-70px] left-[-40px] w-[200px] h-[200px] rounded-full border border-white/10 pointer-events-none" />
+            <p className="relative text-white/80 text-sm font-medium mb-1.5">In-Progress</p>
+            <p className="relative text-white text-[44px] font-bold leading-none">{inProgress.length}</p>
+          </div>
+
+          {/* Resolved */}
+          <div className="relative overflow-hidden flex flex-col items-center justify-center py-7"
+            style={{ background: "linear-gradient(135deg,#0d9488 0%,#0f766e 50%,#064e3b 100%)" }}>
+            <div className="absolute top-[-60px] left-[-60px] w-[150px] h-[150px] rounded-full border border-white/10 pointer-events-none" />
+            <div className="absolute bottom-[-70px] right-[-40px] w-[200px] h-[200px] rounded-full border border-white/10 pointer-events-none" />
+            <p className="relative text-white/80 text-sm font-medium mb-1.5">Resolved</p>
+            <p className="relative text-white text-[44px] font-bold leading-none">{resolved.length}</p>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 }
