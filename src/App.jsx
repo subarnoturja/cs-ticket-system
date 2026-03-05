@@ -112,6 +112,69 @@ function App() {
 
         </div>
       </div>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-400 px-7 pt-10 pb-5">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1.2fr] gap-7 mb-8">
+
+            {/* Brand */}
+            <div>
+              <p className="text-white font-bold text-[15px] mb-3">CS — Ticket System</p>
+              <p className="text-[12px] text-gray-500 leading-7 max-w-[230px]">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </p>
+            </div>
+
+            {/* Company */}
+            <div>
+              <p className="text-white font-semibold text-[13px] mb-3.5">Company</p>
+              {["About Us", "Our Mission", "Contact Sales"].map(l => (
+                <p key={l} className="text-[12.5px] text-gray-500 mb-2.5 cursor-pointer hover:text-gray-300 transition-colors">{l}</p>
+              ))}
+            </div>
+
+            {/* Services */}
+            <div>
+              <p className="text-white font-semibold text-[13px] mb-3.5">Services</p>
+              {["Products & Services", "Customer Stories", "Download Apps"].map(l => (
+                <p key={l} className="text-[12.5px] text-gray-500 mb-2.5 cursor-pointer hover:text-gray-300 transition-colors">{l}</p>
+              ))}
+            </div>
+
+            {/* Information */}
+            <div>
+              <p className="text-white font-semibold text-[13px] mb-3.5">Information</p>
+              {["Privacy Policy", "Terms & Conditions", "Join Us"].map(l => (
+                <p key={l} className="text-[12.5px] text-gray-500 mb-2.5 cursor-pointer hover:text-gray-300 transition-colors">{l}</p>
+              ))}
+            </div>
+
+            {/* Social Links */}
+            <div>
+              <p className="text-white font-semibold text-[13px] mb-3.5">Social Links</p>
+              {[
+                { bg: "bg-blue-700",  label: "CS — Ticket System", icon: "𝕏" },
+                { bg: "bg-sky-600",   label: "CS — Ticket System", icon: "in" },
+                { bg: "bg-blue-600",  label: "CS — Ticket System", icon: "f" },
+                { bg: "bg-gray-600",  label: "support@css.com",    icon: "✉" },
+              ].map(s => (
+                <div key={s.label} className="flex items-center gap-2 mb-2.5 cursor-pointer group">
+                  <span className={`${s.bg} w-4 h-4 rounded-sm flex items-center justify-center text-[9px] font-bold text-white flex-shrink-0`}>
+                    {s.icon}
+                  </span>
+                  <span className="text-[12px] text-gray-500 group-hover:text-gray-300 transition-colors">{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* Bottom bar */}
+          <div className="border-t border-gray-800 pt-4 text-center">
+            <p className="text-[12px] text-gray-600">© 2025 CS — Ticket System. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
