@@ -47,6 +47,71 @@ function App() {
 
         </div>
       </div>
+      {/* Ticket Section */}
+      <div className="px-6 pt-4 pb-8">
+        <div className="bg-white border-2 border-dashed border-gray-300 rounded-xl p-4 grid grid-cols-[1fr_248px] gap-4 items-start">
+
+          {/* LEFT: Customer Tickets */}
+          <div>
+            <h2 className="text-sm font-bold text-gray-900 mb-3 pb-2.5 border-b border-gray-100">
+              Customer Tickets
+            </h2>
+            <div className="grid grid-cols-2 gap-2.5">
+              {tickets.map(ticket => (
+                <TicketCard
+                  key={ticket.id}
+                  ticket={ticket}
+                  onAdd={handleAddTicket}
+                  active={inProgress.some(t => t.id === ticket.id)}
+                />
+              ))}
+              {tickets.length === 0 && (
+                <div className="col-span-2 text-center py-12 text-gray-400">
+                  <p className="text-3xl mb-2">🎉</p>
+                  <p className="text-[13px] font-semibold">All tickets resolved!</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* RIGHT: Task Status */}
+          <div>
+            <h2 className="text-sm font-bold text-gray-900 mb-3 pb-2.5 border-b border-gray-100">
+              Task Status
+            </h2>
+
+            {/* In-progress list */}
+            <div className="flex flex-col gap-2.5 mb-5">
+              {inProgress.length === 0 ? (
+                <p className="text-xs text-gray-400 py-4">Click a ticket card to add it here.</p>
+              ) : (
+                inProgress.map(ticket => (
+                  <TaskCard key={ticket.id} ticket={ticket} onComplete={handleComplete} />
+                ))
+              )}
+            </div>
+
+            {/* Resolved list */}
+            <div>
+              <h3 className="text-[13px] font-bold text-gray-900 mb-2">Resolved Task</h3>
+              {resolved.length === 0 ? (
+                <p className="text-xs text-gray-400">No resolved tasks yet.</p>
+              ) : (
+                <div className="flex flex-col gap-1.5">
+                  {resolved.map(ticket => (
+                    <div key={ticket.id}
+                      className="bg-green-50 border border-green-200 rounded-md px-2.5 py-1.5 flex items-center gap-1.5 text-[12px] text-green-700 font-medium">
+                      <CheckIcon />
+                      <span className="truncate">{ticket.title}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+
+        </div>
+      </div>
     </>
   );
 }
