@@ -1,6 +1,20 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+// Status badge
+const StatusBadge = ({ status }) => {
+  const isProgress = status === "inprogress";
+  return (
+    <span className={`inline-flex items-center gap-1 text-[11px] font-medium rounded-full px-2 py-0.5 border
+      ${isProgress
+        ? "bg-amber-50 text-amber-800 border-amber-300"
+        : "bg-green-50 text-green-800 border-green-300"}`}>
+      <span className={`w-1.5 h-1.5 rounded-full ${isProgress ? "bg-amber-400" : "bg-green-500"}`} />
+      {isProgress ? "In-Progress" : "Open"}
+    </span>
+  );
+};
+
 // Icons
 const UserIcon = () => (
   <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
