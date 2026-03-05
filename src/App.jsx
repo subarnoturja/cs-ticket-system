@@ -1,6 +1,22 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
+// Priority Badge
+const priorityConfig = {
+  high:   { cls: "text-red-600",    label: "HIGH PRIORITY" },
+  medium: { cls: "text-amber-600",  label: "MEDIUM PRIORITY" },
+  low:    { cls: "text-green-600",  label: "LOW PRIORITY" },
+};
+
+const PriorityBadge = ({ priority }) => {
+  const { cls, label } = priorityConfig[priority] ?? priorityConfig.low;
+  return (
+    <span className={`text-[9px] font-bold tracking-wide uppercase ${cls}`}>
+      {label}
+    </span>
+  );
+};
+
 // Status badge
 const StatusBadge = ({ status }) => {
   const isProgress = status === "inprogress";
